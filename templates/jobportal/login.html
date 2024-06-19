@@ -1,0 +1,34 @@
+{% extends "jobportal/base.html" %}
+{% block content %}
+<div class="container-fluid bodys pt-5">
+<div class="container bg-light innerbody pt-3">
+   <h3 class="text-center m-2 " style="color: rgb(109, 109, 221);">LogIn</h3>
+<!-- <form method="post"> -->
+    
+    <form >
+    <div class="form-group row">
+      <label for="staticEmail" class="col-form-label">Email</label>
+      <div class="">
+        <input type="text"  class="form-control inp"   placeholder="Enter your reg email" id="staticEmail" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword" class="col-form-label">Password</label>
+      <div class="">
+        <input type="password" class="form-control inp" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+
+    
+    <div class="d-flex justify-content-center">
+
+    <button type="submit" class="btn btn-info m-2">Sing Up</button>
+    </div>
+    <div class="d-flex justify-content-center">
+
+        <button type="submit" class="btn btn-warning ">Register</button>
+        </div>
+  </form>
+</div>
+</div>
+{% endblock content %}
