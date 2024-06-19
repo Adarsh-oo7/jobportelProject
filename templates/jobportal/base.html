@@ -18,7 +18,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"><img src="{% static 'img/icons/logo.png'%}" class="ing" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +37,7 @@
                 <a class="nav-link m-3" href="#">Post</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link m-3" href="#">Sign in</a>
+              <a class="nav-link m-3" href="{% url 'login' %}">Sign in</a>
             </li>
           </ul>
         </div>
@@ -84,7 +84,7 @@
 
         </div>
         <div style="background-color: black; margin: 0px; padding: 0px;" >
-            <h6 class="text-center text-light foot">copyright@learnbuds2024</h6>
+            <small class="text-center text-light foot">copyright@learnbuds2024</small>
         </div>
       </footer>
 </body>
