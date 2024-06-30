@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'Authentications',
+    'phonenumber_field',
 
     'U_Auth', # app for authentication
     'ErrHandler', # app for error handling 

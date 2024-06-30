@@ -2,6 +2,7 @@
 
 import django.contrib.auth.models
 import django.contrib.auth.validators
+import django.db.models.deletion
 import django.utils.timezone
 from django.db import migrations, models
 
@@ -29,9 +30,16 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('is_user', models.BooleanField(default=False)),
-                ('groups', models.ManyToManyField(blank=True, related_name='u_auth_user_set', to='auth.group', verbose_name='groups')),
-                ('user_permissions', models.ManyToManyField(blank=True, related_name='u_auth_user_permissions_set', to='auth.permission', verbose_name='user permissions')),
+                ('phone_number', models.CharField(max_length=15)),
+                ('profile_photo', models.ImageField(upload_to='uplodes/')),
+                ('dob', models.DateField(blank=True, null=True)),
+                ('bio', models.TextField(blank=True, max_length=500, null=True)),
+                ('job_title', models.CharField(blank=True, max_length=50, null=True)),
+                ('gender', models.CharField(choices=[('M', 'Male'), ('F', 'Female')], default='M', max_length=50)),
+                ('country', models.CharField(choices=[('IN', 'Indai')], max_length=20)),
+                ('open_to_hiring', models.BooleanField(default=False)),
+                ('groups', models.ManyToManyField(blank=True, related_name='authentications_user_set', to='auth.group', verbose_name='groups')),
+                ('user_permissions', models.ManyToManyField(blank=True, related_name='authentications_user_permissions_set', to='auth.permission', verbose_name='user permissions')),
             ],
             options={
                 'verbose_name': 'user',
@@ -41,5 +49,23 @@ class Migration(migrations.Migration):
             managers=[
                 ('objects', django.contrib.auth.models.UserManager()),
             ],
+        ),
+        migrations.CreateModel(
+            name='Address',
+            fields=[
+                ('id', models.BigAutoField(primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=50)),
+                ('Address_line_1', models.TextField(max_length=250)),
+                ('Address_line_2', models.TextField(max_length=250)),
+                ('city', models.CharField(max_length=50)),
+                ('state', models.CharField(max_length=50)),
+                ('pincode', models.CharField(max_length=50)),
+                ('phone', models.CharField(max_length=15)),
+                ('is_default', models.BooleanField(default=True)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Authentications.user')),
+            ],
+            options={
+                'unique_together': {('user', 'name')},
+            },
         ),
     ]

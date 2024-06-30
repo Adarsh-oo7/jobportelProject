@@ -9,15 +9,17 @@
     <div class="form-group row">
       <label for="staticEmail" class="col-form-label">Email</label>
       <div class="">
-        <input type="text"  class="form-control inp"   placeholder="Enter your reg email" id="staticEmail" >
-      </div>
+        {{ form.username }}
+            </div>
     </div>
     <div class="form-group row">
       <label for="inputPassword" class="col-form-label">Password</label>
       <div class="">
-        <input type="password" class="form-control inp" id="inputPassword" placeholder="Password">
-      </div>
+        {{ form.password }}  
+          </div>
     </div>
+
+
 
     
     <div class="d-flex justify-content-center">
@@ -35,4 +37,41 @@
   
 </div>
 </div>
+
+
+
+{% comment %} 
+<div class="container fluid">
+  <div class="row">
+      <div class="col-sm-4 offset-sm-4">
+          <h1 class="text-center mt-5">Login</h1>
+          <form method="post">
+              <div class="form-group">
+                  <label for="">{{ form.username.label }}</label>
+                  {{ form.username }}
+                  <div class="text-danger">
+                      {{ form.username.errors.as_ul }}
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="">{{ form.password.label }}</label>
+                  {{ form.password }}
+                  
+                  {% if form.password.errors %}
+                      <div class="alert alert-danger">
+                          {% for e in form.password.errors %}
+                              <p class="text-danger">{{ e }}</p>
+                          {% endfor %}
+                      </div>
+                  {% endif %}
+                      
+              </div>
+              <div class="d-grid">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary mt-2">Login</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div> {% endcomment %}
 {% endblock content %}

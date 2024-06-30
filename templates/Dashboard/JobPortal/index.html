@@ -3,22 +3,95 @@
 
 {% block title %} Dashboard {% endblock title %}
 
-{% block path %} {% endblock path %}
+{% block path %} 
 
-{% block css %} {% endblock css %}
+{% endblock path %}
+
+{% block css %} 
+
+{% endblock css %}
 
 {% block content %}
 <!-- Content wrapper -->
-<div class="content-wrapper">
-
-  <!-- Content -->
-  <div class="container">
-      <h1 class="my-3 text-center">Job Portal App</h1>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="{% static 'img/icons/logo.png'%}" class="ing" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse text-center" id="navbarNav">
+    <ul class="navbar-nav text-center">
+      <li class="nav-item active">
+        <a class="nav-link m-3" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link m-3" href="#">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link m-3" href="#">Jobs</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link m-3" href="#">Post</a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link m-3" href="{% url 'login' %}">Profile</a>
+      </li>
+    </ul>
   </div>
-  <!-- / Content -->
+</nav>
 
-  <div class="content-backdrop fade"></div>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+  <div class="content-fluid bg-dark">
+      <div class="forCenter text-center">
+          <div class="wrapper text-center mt-3">
+            <div class="icon facebook">
+               <div class="tooltip">
+                  Facebook
+               </div>
+               <span><i class="fab fa-facebook-f"></i></span>
+            </div>
+            <div class="icon twitter">
+               <div class="tooltip">
+                  Twitter
+               </div>
+               <span><i class="fab fa-twitter"></i></span>
+            </div>
+            <div class="icon instagram">
+               <div class="tooltip">
+                  Instagram
+               </div>
+               <span><i class="fab fa-instagram"></i></span>
+            </div>
+           
+            <div class="icon youtube">
+               <div class="tooltip">
+                  YouTube
+               </div>
+               <span><i class="fab fa-youtube"></i></span>
+            </div>
+         </div>
+        </div>
+
+      <div class="text-center text-light "><span class="m-3">Home</span><span class="m-3">News</span><span class="m-3">About</span><span class="m-3">Contact Us</span><span>Our Team</span></div>
+      
+
+  </div>
+  <div style="background-color: black; margin: 0px; padding: 0px;" >
+      <small class="text-center text-light foot">copyright@learnbuds2024</small>
+  </div>
+</footer>
+
 <!-- Content wrapper -->
 {% endblock content %}
 
