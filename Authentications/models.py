@@ -2,73 +2,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
 from django.contrib.auth.models import Permission
-# from phonenumber_field.modelfields import PhoneNumberField
-
-# class ProfileData(models.Model):
-#     name = models.CharField(max_length=50)
-#     email = models.EmailField(max_length=254, unique=True)
-#     phone_number = PhoneNumberField()
-#     age = models.IntegerField()
-    
-#     GENDER_CHOICES = (
-#         ('M', 'Male'),
-#         ('F', 'Female'),
-#     )
-#     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-#     location = models.CharField(max_length=50)
-#     experience = models.IntegerField()
-#     profile_img = models.ImageField(upload_to='uploads/')
-#     cv = models.FileField(upload_to='uploads/')
-
-#     def __str__(self):
-#         return self.name
-
-# class Skill(models.Model):
-#     profile = models.ForeignKey(ProfileData, on_delete=models.CASCADE, related_name='skills')
-#     name = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.name
-
-# class Certification(models.Model):
-#     profile = models.ForeignKey(ProfileData, on_delete=models.CASCADE, related_name='certifications')
-#     name = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.name
-
-# class Language(models.Model):
-#     profile = models.ForeignKey(ProfileData, on_delete=models.CASCADE, related_name='languages')
-#     name = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.name
-
-# class Qualification(models.Model):
-#     profile = models.ForeignKey(ProfileData, on_delete=models.CASCADE, related_name='qualifications')
-#     name = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.name
-
+from django.contrib.auth.forms import UserCreationForm
 
 
 
 
 
 class User(AbstractUser):
-    groups = models.ManyToManyField(
-        Group,
-        verbose_name="groups",
-        blank=True,
-        related_name='authentications_user_set'  # Ensure this is unique
-    )
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name="user permissions",
-        blank=True,
-        related_name='authentications_user_permissions_set'  # Ensure this is unique
-    )
 
 
     GENDER_CHICE=[

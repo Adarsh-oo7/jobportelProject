@@ -13,32 +13,11 @@ from django.shortcuts import render
 
 
 class login(View):
-    from_class= LoginForm
+    form_class= LoginForm
     template_name = 'jobPortal/login.html'
 
     def get(self,request, *args,**kwargs):
-        return render (request,self.template_name,{'form':self.from_class()})
-    
-    def post(self,request,*args, **kwargs):
-        form=self.from_class(data=request.POST)
-        if form.is_valid():
-            username=form.cleaned_data['username']
-            password=form.cleaned_data['password']
-            user=authenticate(request,username=username,password=password)
-            if user is not None:
-                login(request,user)
-                return redirect('/')
-            else:
-                return HttpResponse("Incalid username or passord")
-        return render(request,self.template_name,{'form':form})
-
-
-class RegisterView(View):
-    form_class=UserCreationForm
-    template_name='JobPortal/register.html'
-
-    def get(self, request, *args, **kwargs):
-        return render(request,self.template_name,{'form':self.form_class()})
+        return render (request,self.template_name,{'form':self.form_class()})
     
     def post(self,request,*args, **kwargs):
         form=self.form_class(data=request.POST)
@@ -47,9 +26,28 @@ class RegisterView(View):
             password=form.cleaned_data['password']
             user=authenticate(request,username=username,password=password)
             if user is not None:
-                login(request,user)
+                login(request, user)
                 return redirect('/')
             else:
-                return HttpResponse('invaled username or passord')
-                
+                return HttpResponse("Incalid username or passord")
+        return render(request,self.template_name,{'form':form})
+
+
+class RegisterView(View):
+    form_class=UserCreationForm
+    template_name='jobportal/register.html'
+
+    def get(self,request,*args,**kwargs):
+        return render(request,self.template_name,{'form':self.form_class()})
+    
+    def post(self,request,*args,**kwargs):
+        form=self.form_class(request.POST)
+        if not form.is_valid():
+            return render(request,self.template_name,{'form':form})
+        
+        user=form.save(commit=False)
+        user.password=form.cleaned_data=['password']
+        user.save()
+        return redirect('login')
+            
                
